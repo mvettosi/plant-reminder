@@ -1,12 +1,12 @@
 [versions]
-androidGradlePlugin = "8.1.4"
-androidxActivity = "1.8.1"
+androidGradlePlugin = "8.2.0"
+androidxActivity = "1.8.2"
 androidxComposeBom = "2023.10.01"
-androidxComposeCompiler = "1.5.4"
+androidxComposeCompiler = "1.5.7"
 androidxCore = "1.12.0"
 androidxHilt = "1.1.0"
 androidxLifecycle = "2.6.2"
-androidxNavigation = "2.7.5"
+androidxNavigation = "2.7.6"
 androidxRoom = "2.6.1"
 androidxTestCore = "1.5.0"
 androidxTestExt = "1.1.5"
@@ -14,7 +14,7 @@ androidxTestRunner = "1.5.2"
 coroutines = "1.7.3"
 hilt = "2.48.1"
 junit = "4.13.2"
-kotlin = "1.9.20"
+kotlin = "1.9.21"
 ksp = "1.9.20-1.0.14"
 
 [libraries]
@@ -55,4 +55,5 @@ android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
 hilt-gradle = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp"}

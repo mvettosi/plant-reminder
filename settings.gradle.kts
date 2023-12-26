@@ -28,7 +28,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Multimodule template"
+rootProject.name = "Plant Reminder"
 
 include(":app")
 
@@ -37,6 +37,7 @@ include(":presentation:shared")
 include(":presentation:home")
 
 // Domain
+include(":domain")
 
 // Data
 include(":data:shared")
