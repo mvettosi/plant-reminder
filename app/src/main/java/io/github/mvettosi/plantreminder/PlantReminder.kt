@@ -14,34 +14,10 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "Multimodule template"
+package io.github.mvettosi.plantreminder
 
-include(":app")
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-// Presentation
-include(":presentation:shared")
-include(":presentation:home")
-
-// Domain
-
-// Data
-include(":data:shared")
-include(":data:plant")
-
-// Test
-include(":test:shared")
-include(":test:app")
+@HiltAndroidApp
+class PlantReminder : Application()

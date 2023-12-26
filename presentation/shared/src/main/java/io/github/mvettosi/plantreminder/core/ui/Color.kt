@@ -14,34 +14,14 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "Multimodule template"
+package io.github.mvettosi.plantreminder.core.ui
 
-include(":app")
+import androidx.compose.ui.graphics.Color
 
-// Presentation
-include(":presentation:shared")
-include(":presentation:home")
+val Purple80 = Color(0xFFD0BCFF)
+val PurpleGrey80 = Color(0xFFCCC2DC)
+val Pink80 = Color(0xFFEFB8C8)
 
-// Domain
-
-// Data
-include(":data:shared")
-include(":data:plant")
-
-// Test
-include(":test:shared")
-include(":test:app")
+val Purple40 = Color(0xFF6650a4)
+val PurpleGrey40 = Color(0xFF625b71)
+val Pink40 = Color(0xFF7D5260)

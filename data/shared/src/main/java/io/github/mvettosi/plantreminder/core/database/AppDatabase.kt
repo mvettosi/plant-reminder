@@ -14,34 +14,12 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
+package io.github.mvettosi.plantreminder.core.database
+
+import androidx.room.Database
+import androidx.room.RoomDatabase
+
+@Database(entities = [Plant::class], version = 1)
+abstract class AppDatabase : RoomDatabase() {
+    abstract fun plantDao(): PlantDao
 }
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "Multimodule template"
-
-include(":app")
-
-// Presentation
-include(":presentation:shared")
-include(":presentation:home")
-
-// Domain
-
-// Data
-include(":data:shared")
-include(":data:plant")
-
-// Test
-include(":test:shared")
-include(":test:app")

@@ -14,34 +14,28 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
+package io.github.mvettosi.plantreminder.core.database
+
+import androidx.room.Dao
+import androidx.room.Entity
+import androidx.room.Insert
+import androidx.room.PrimaryKey
+import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
+
+@Entity
+data class Plant(
+    val name: String
+) {
+    @PrimaryKey(autoGenerate = true)
+    var uid: Int = 0
 }
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
+
+@Dao
+interface PlantDao {
+    @Query("SELECT * FROM plant ORDER BY uid DESC LIMIT 10")
+    fun getPlants(): Flow<List<Plant>>
+
+    @Insert
+    suspend fun insertPlant(item: Plant)
 }
-rootProject.name = "Multimodule template"
-
-include(":app")
-
-// Presentation
-include(":presentation:shared")
-include(":presentation:home")
-
-// Domain
-
-// Data
-include(":data:shared")
-include(":data:plant")
-
-// Test
-include(":test:shared")
-include(":test:app")
