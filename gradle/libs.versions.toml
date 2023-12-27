@@ -16,6 +16,7 @@ hilt = "2.48.1"
 junit = "4.13.2"
 kotlin = "1.9.21"
 ksp = "1.9.20-1.0.14"
+javax-inject-javax-inject-version = "1"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidxActivity" }
@@ -47,6 +48,7 @@ hilt-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", 
 junit = { module = "junit:junit", version.ref = "junit" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+javax-inject-javax-inject = { group = "javax.inject", name = "javax.inject", version.ref = "javax-inject-javax-inject-version" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }

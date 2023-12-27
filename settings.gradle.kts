@@ -37,7 +37,7 @@ include(":presentation:shared")
 include(":presentation:home")
 
 // Domain
-include(":domain")
+include(":domain:plant")
 
 // Data
 include(":data:shared")
