@@ -16,5 +16,5 @@ data class Plant(
     val waterTime: LocalTime,
     val lastWaterDate: LocalDateTime = LocalDateTime.MIN,
     val nextWaterDate: LocalDateTime,
-    val trashed: Boolean = false
+    val deleted: Boolean = false
 )

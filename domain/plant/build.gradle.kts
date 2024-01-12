@@ -4,10 +4,15 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 dependencies {
     implementation(libs.javax.inject.javax.inject)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.io.mockk.mockk)
+    testImplementation(libs.org.jetbrains.kotlin.kotlin.test)
+    testImplementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.test)
 }

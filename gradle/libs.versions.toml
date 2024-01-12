@@ -17,6 +17,8 @@ junit = "4.13.2"
 kotlin = "1.9.21"
 ksp = "1.9.20-1.0.14"
 javax-inject-javax-inject-version = "1"
+mockk-version = "1.12.1"
+kotlinx-coroutines-version = "1.6.4"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidxActivity" }
@@ -49,6 +51,10 @@ junit = { module = "junit:junit", version.ref = "junit" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 javax-inject-javax-inject = { group = "javax.inject", name = "javax.inject", version.ref = "javax-inject-javax-inject-version" }
+io-mockk-mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk-version" }
+io-mockk-mockk-android = { group = "io.mockk", name = "mockk-android", version.ref = "mockk-version" }
+org-jetbrains-kotlin-kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test" }
+org-jetbrains-kotlinx-kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-version" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
