@@ -7,6 +7,7 @@ import io.github.domain.repository.PlantRepository
 import io.github.domain.util.TimeHelper
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
+import io.mockk.every
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
@@ -24,6 +25,7 @@ class GetPlantsUseCaseTest {
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
+        every { timeHelper.now() } returns TestData.now
         underTest = GetPlantsUseCase(plantRepository, timeHelper)
     }
 
