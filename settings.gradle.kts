@@ -38,6 +38,7 @@ include(":presentation:home")
 
 // Domain
 include(":domain:plant")
+include(":domain:notification")
 
 // Data
 include(":data:shared")
