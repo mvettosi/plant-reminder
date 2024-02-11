@@ -14,35 +14,16 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
+package io.github.mvettosi.plantreminder.data.database
+
+import androidx.room.Database
+import androidx.room.TypeConverters
+import androidx.room.RoomDatabase
+import io.github.mvettosi.plantreminder.data.database.plant.PlantEntity
+import io.github.mvettosi.plantreminder.data.database.plant.PlantDao
+
+@Database(entities = [PlantEntity::class], version = 1)
+@TypeConverters(RoomConverters::class)
+abstract class AppDatabase : RoomDatabase() {
+    abstract fun plantDao(): PlantDao
 }
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "Plant Reminder"
-
-include(":app")
-
-// Presentation
-include(":presentation:shared")
-include(":presentation:home")
-
-// Domain
-include(":domain:plant")
-include(":domain:notification")
-
-// Data
-include(":data:shared")
-include(":data:plant")
-
-// Test
-include(":test:shared")

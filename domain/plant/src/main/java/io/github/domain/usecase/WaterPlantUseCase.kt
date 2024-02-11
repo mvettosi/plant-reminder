@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class WaterPlantUseCase
 @Inject constructor(private val getPlantUseCase: GetPlantUseCase, private val savePlantUseCase: SavePlantUseCase, private val timeHelper: TimeHelper) {
-  suspend operator fun invoke(plantId: String): Result<Plant> = runCatching {
+  suspend operator fun invoke(plantId: Int): Result<Plant> = runCatching {
     getPlantUseCase(plantId).getOrThrow().let { plant ->
       plant.copy(
         lastWaterDate = timeHelper.now(),

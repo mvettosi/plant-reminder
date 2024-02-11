@@ -26,9 +26,9 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        minSdk = 21
+        minSdk = 26
 
-        testInstrumentationRunner = "io.github.mvettosi.plantreminder.core.testing.HiltTestRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -51,6 +51,8 @@ android {
 
 dependencies {
     implementation(project(":data:shared"))
+    implementation(project(":domain:plant"))
+    implementation(project(":test:shared"))
 
     // Arch Components
     implementation(libs.hilt.android)

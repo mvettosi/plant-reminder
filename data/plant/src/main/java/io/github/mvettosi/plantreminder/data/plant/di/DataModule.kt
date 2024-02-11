@@ -14,35 +14,23 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
+package io.github.mvettosi.plantreminder.data.plant.di
+
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import io.github.domain.repository.PlantRepository
+import io.github.mvettosi.plantreminder.data.plant.repository.PlantRepositoryImpl
+import javax.inject.Singleton
+
+@Module
+@InstallIn(SingletonComponent::class)
+interface DataModule {
+
+    @Singleton
+    @Binds
+    fun bindsPlantRepository(
+        plantRepository: PlantRepositoryImpl
+    ): PlantRepository
 }
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "Plant Reminder"
-
-include(":app")
-
-// Presentation
-include(":presentation:shared")
-include(":presentation:home")
-
-// Domain
-include(":domain:plant")
-include(":domain:notification")
-
-// Data
-include(":data:shared")
-include(":data:plant")
-
-// Test
-include(":test:shared")

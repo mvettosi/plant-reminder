@@ -26,9 +26,9 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        minSdk = 21
+        minSdk = 26
 
-        testInstrumentationRunner = "io.github.mvettosi.plantreminder.core.testing.HiltTestRunner"
+        testInstrumentationRunner = "io.github.mvettosi.plantreminder.test.shared.HiltTestRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 

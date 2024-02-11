@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class SaveForgotToWaterUseCase
 @Inject constructor(private val notificationRepository: NotificationRepository) {
-  suspend operator fun invoke(plantId: String) = runCatching {
+  suspend operator fun invoke(plantId: Int) = runCatching {
      notificationRepository.saveNotification(Notification.ForgotToWater(plantId = plantId))
   }
 }

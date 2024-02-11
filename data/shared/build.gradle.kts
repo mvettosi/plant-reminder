@@ -27,9 +27,9 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        minSdk = 21
+        minSdk = 26
 
-        testInstrumentationRunner = "io.github.mvettosi.plantreminder.core.testing.HiltTestRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
 
         // The schemas directory contains a schema file for each version of the Room database.
@@ -64,4 +64,14 @@ dependencies {
     ksp(libs.androidx.room.compiler)
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+
+    // Test
+    testImplementation(libs.org.jetbrains.kotlin.kotlin.test)
+    testImplementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.test)
+
+    // Instrumented tests: jUnit rules and runners
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.org.jetbrains.kotlin.kotlin.test)
+    androidTestImplementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.test)
 }

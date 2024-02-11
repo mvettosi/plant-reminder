@@ -3,10 +3,9 @@ package io.github.domain.model
 import java.time.DayOfWeek
 import java.time.LocalDateTime
 import java.time.LocalTime
-import java.util.UUID
 
 data class Plant(
-    val id: String = UUID.randomUUID().toString(),
+    val id: Int = -1,
     val name: String,
     val size: PlantSize,
     val image: String? = null,
