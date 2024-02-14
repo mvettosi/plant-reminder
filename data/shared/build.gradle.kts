@@ -23,7 +23,7 @@ plugins {
 }
 
 android {
-    namespace = "io.github.mvettosi.plantreminder.core.database"
+    namespace = "io.github.mvettosi.plantreminder.data.shared"
     compileSdk = 34
 
     defaultConfig {

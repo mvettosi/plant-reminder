@@ -14,36 +14,24 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
+package io.github.mvettosi.plantreminder.data.database.notification
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import java.time.LocalDateTime
+
+@Entity
+data class NotificationEntity(
+    val type: NotificationType,
+    val displayedTime: LocalDateTime,
+    val plantsToWated: Int? = null,
+    val plantId: Int? = null
+) {
+    @PrimaryKey(autoGenerate = true)
+    var uid: Int = 0
 }
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
+
+enum class NotificationType {
+    DAILY_REMINDER,
+    FORGOT_TO_WATER
 }
-rootProject.name = "Plant Reminder"
-
-include(":app")
-
-// Presentation
-include(":presentation:shared")
-include(":presentation:home")
-
-// Domain
-include(":domain:plant")
-include(":domain:notification")
-
-// Data
-include(":data:shared")
-include(":data:plant")
-include(":data:notification")
-
-// Test
-include(":test:shared")

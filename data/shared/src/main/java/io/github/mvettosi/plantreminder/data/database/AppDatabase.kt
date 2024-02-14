@@ -19,11 +19,14 @@ package io.github.mvettosi.plantreminder.data.database
 import androidx.room.Database
 import androidx.room.TypeConverters
 import androidx.room.RoomDatabase
+import io.github.mvettosi.plantreminder.data.database.notification.NotificationDao
+import io.github.mvettosi.plantreminder.data.database.notification.NotificationEntity
 import io.github.mvettosi.plantreminder.data.database.plant.PlantEntity
 import io.github.mvettosi.plantreminder.data.database.plant.PlantDao
 
-@Database(entities = [PlantEntity::class], version = 1)
+@Database(entities = [PlantEntity::class, NotificationEntity::class], version = 1)
 @TypeConverters(RoomConverters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun plantDao(): PlantDao
+    abstract fun notificationDao(): NotificationDao
 }

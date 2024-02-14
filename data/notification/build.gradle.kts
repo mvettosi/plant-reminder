@@ -18,10 +18,11 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
-    namespace = "io.github.mvettosi.plantreminder.presentation.shared"
+    namespace = "io.github.mvettosi.plantreminder.core.data.notification"
     compileSdk = 34
 
     defaultConfig {
@@ -32,38 +33,35 @@ android {
     }
 
     buildFeatures {
-        compose = true
         aidl = false
         buildConfig = false
         renderScript = false
         shaders = false
     }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+
     kotlinOptions {
         jvmTarget = "17"
     }
 }
 
 dependencies {
-    val composeBom = platform(libs.androidx.compose.bom)
-    implementation(composeBom)
-    androidTestImplementation(composeBom)
+    implementation(project(":data:shared"))
+    implementation(project(":domain:plant"))
+    implementation(project(":domain:notification"))
+    implementation(project(":test:shared"))
 
-    // Core Android dependencies
-    implementation(libs.androidx.core.ktx)
+    // Arch Components
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
-    // Compose
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.androidx.compose.material3)
-    // Tooling
-    debugImplementation(libs.androidx.compose.ui.tooling)
+    implementation(libs.kotlinx.coroutines.android)
+
+    // Local tests: jUnit, coroutines, Android runner
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
 }
