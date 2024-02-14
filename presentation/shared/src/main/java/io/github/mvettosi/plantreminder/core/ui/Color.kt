@@ -30,6 +30,9 @@ val Accent600 = Color(0xFF085D6F)
 val Accent500 = Color(0xFF0A6375)
 val Accent100 = Color(0xFF8CB6B2)
 
+// Error
+val Error500 = Color(0xFFFC1B1B)
+
 // Other
 val OtherG500 = Color(0xFFCFE3C4)
 val OtherG100 = Color(0xFFF5F9F3)
@@ -39,14 +42,5 @@ val OtherL500 = Color(0xFFB2D99E)
 val OtherL100 = Color(0xFFF9FBF8)
 val OtherB500 = Color(0xFFA7D1E2)
 val OtherB100 = Color(0xFFF5FAFC)
-val OtherB2500 = Color(0xFFDBE1B8)
-val OtherB2100 = Color(0xFFFDFFF1)
-
-//TODO delete these
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
-
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val OtherY500 = Color(0xFFDBE1B8)
+val OtherY100 = Color(0xFFFDFFF1)
