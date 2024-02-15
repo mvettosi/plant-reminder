@@ -57,7 +57,6 @@ android {
 dependencies {
     implementation(project(":data:plant"))
     implementation(project(":presentation:shared"))
-    androidTestImplementation(project(":test:shared"))
 
     // Core Android dependencies
     implementation(libs.androidx.activity.compose)

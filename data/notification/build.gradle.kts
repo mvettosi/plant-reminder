@@ -53,7 +53,6 @@ dependencies {
     implementation(project(":data:shared"))
     implementation(project(":domain:plant"))
     implementation(project(":domain:notification"))
-    implementation(project(":test:shared"))
 
     // Arch Components
     implementation(libs.hilt.android)

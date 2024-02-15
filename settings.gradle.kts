@@ -44,6 +44,3 @@ include(":domain:notification")
 include(":data:shared")
 include(":data:plant")
 include(":data:notification")
-
-// Test
-include(":test:shared")

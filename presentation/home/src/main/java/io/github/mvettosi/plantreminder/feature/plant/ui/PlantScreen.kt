@@ -16,7 +16,7 @@
 
 package io.github.mvettosi.plantreminder.feature.plant.ui
 
-import io.github.mvettosi.plantreminder.core.ui.MyApplicationTheme
+import io.github.mvettosi.plantreminder.presentation.shared.theme.MyApplicationTheme
 import io.github.mvettosi.plantreminder.feature.plant.ui.PlantUiState.Success
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
