@@ -22,14 +22,16 @@ import io.github.mvettosi.plantreminder.data.database.notification.NotificationD
 import io.github.mvettosi.plantreminder.data.notification.mapper.NotificationEntityMapper
 import javax.inject.Inject
 
-class NotificationRepositoryImpl @Inject constructor(
+class NotificationRepositoryImpl
+@Inject
+constructor(
     private val plantDao: NotificationDao,
     private val plantEntityMapper: NotificationEntityMapper
 ) : NotificationRepository {
-    override suspend fun getNotifications(): List<Notification> =
-        plantDao.getNotifications().map { plantEntityMapper.mapToDomain(it) }
+  override suspend fun getNotifications(): List<Notification> =
+      plantDao.getNotifications().map { plantEntityMapper.mapToDomain(it) }
 
-    override suspend fun saveNotification(notification: Notification) {
-        plantDao.insertNotification(plantEntityMapper.mapToEntity(notification))
-    }
+  override suspend fun saveNotification(notification: Notification) {
+    plantDao.insertNotification(plantEntityMapper.mapToEntity(notification))
+  }
 }

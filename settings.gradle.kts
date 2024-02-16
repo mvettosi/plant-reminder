@@ -15,32 +15,38 @@
  */
 
 pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
+  repositories {
+    gradlePluginPortal()
+    google()
+    mavenCentral()
+  }
 }
+
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
+  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+  repositories {
+    google()
+    mavenCentral()
+  }
 }
+
 rootProject.name = "Plant Reminder"
 
 include(":app")
 
 // Presentation
 include(":presentation:shared")
+
 include(":presentation:home")
 
 // Domain
 include(":domain:plant")
+
 include(":domain:notification")
 
 // Data
 include(":data:shared")
+
 include(":data:plant")
+
 include(":data:notification")

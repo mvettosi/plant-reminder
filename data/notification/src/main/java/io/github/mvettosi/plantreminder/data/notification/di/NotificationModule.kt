@@ -28,9 +28,9 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 interface NotificationModule {
 
-    @Singleton
-    @Binds
-    fun bindsNotificationRepository(
-        notificationRepositoryImpl: NotificationRepositoryImpl
-    ): NotificationRepository
+  @Singleton
+  @Binds
+  fun bindsNotificationRepository(
+      notificationRepositoryImpl: NotificationRepositoryImpl
+  ): NotificationRepository
 }

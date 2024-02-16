@@ -22,21 +22,21 @@ import io.github.mvettosi.plantreminder.data.database.plant.PlantDao
 import io.github.mvettosi.plantreminder.data.plant.mapper.PlantEntityMapper
 import javax.inject.Inject
 
-class PlantRepositoryImpl @Inject constructor(
-    private val plantDao: PlantDao,
-    private val plantEntityMapper: PlantEntityMapper
-) : PlantRepository {
-    override suspend fun getPlants(): List<Plant> =
-        plantDao.getPlants().map { plantEntityMapper.mapToDomain(it) }
+class PlantRepositoryImpl
+@Inject
+constructor(private val plantDao: PlantDao, private val plantEntityMapper: PlantEntityMapper) :
+    PlantRepository {
+  override suspend fun getPlants(): List<Plant> =
+      plantDao.getPlants().map { plantEntityMapper.mapToDomain(it) }
 
-    override suspend fun getPlant(plantId: Int): Plant =
-        plantEntityMapper.mapToDomain(plantDao.getPlant(plantId))
+  override suspend fun getPlant(plantId: Int): Plant =
+      plantEntityMapper.mapToDomain(plantDao.getPlant(plantId))
 
-    override suspend fun savePlant(plant: Plant) {
-        plantDao.insertPlant(plantEntityMapper.mapToEntity(plant))
-    }
+  override suspend fun savePlant(plant: Plant) {
+    plantDao.insertPlant(plantEntityMapper.mapToEntity(plant))
+  }
 
-    override suspend fun deleteAll(trashed: Boolean) {
-        plantDao.deleteUsers(trashed)
-    }
+  override suspend fun deleteAll(trashed: Boolean) {
+    plantDao.deleteUsers(trashed)
+  }
 }

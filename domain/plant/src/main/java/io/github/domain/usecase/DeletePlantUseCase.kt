@@ -4,14 +4,12 @@ import io.github.domain.model.Plant
 import javax.inject.Inject
 
 class DeletePlantUseCase
-@Inject constructor(
+@Inject
+constructor(
     private val getPlantUseCase: GetPlantUseCase,
     private val savePlantUseCase: SavePlantUseCase
 ) {
   suspend operator fun invoke(plantId: Int): Result<Plant> = runCatching {
-    getPlantUseCase(plantId)
-        .getOrThrow()
-        .copy(deleted = true)
-        .also { savePlantUseCase(it) }
+    getPlantUseCase(plantId).getOrThrow().copy(deleted = true).also { savePlantUseCase(it) }
   }
 }

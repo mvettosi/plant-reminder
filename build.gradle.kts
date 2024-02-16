@@ -15,3 +15,21 @@
  */
 
 // Root build.gradle.kts
+import com.diffplug.gradle.spotless.SpotlessExtension
+
+plugins { alias(libs.plugins.com.diffplug.spotless) }
+
+configure<SpotlessExtension> {
+  java {
+    target("**/src/**/*.java")
+    googleJavaFormat()
+  }
+  kotlin {
+    target("**/src/**/*.kt")
+    ktfmt("0.30")
+  }
+  kotlinGradle {
+    target("**/*.gradle.kts")
+    ktfmt()
+  }
+}

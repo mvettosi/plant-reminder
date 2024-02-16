@@ -16,8 +16,6 @@
 
 package io.github.mvettosi.plantreminder.feature.plant.ui
 
-import io.github.mvettosi.plantreminder.presentation.shared.theme.MyApplicationTheme
-import io.github.mvettosi.plantreminder.feature.plant.ui.PlantUiState.Success
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -37,17 +35,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import io.github.mvettosi.plantreminder.feature.plant.ui.PlantUiState.Success
+import io.github.mvettosi.plantreminder.presentation.shared.theme.AppTheme
 
 @Composable
 fun PlantScreen(modifier: Modifier = Modifier, viewModel: PlantViewModel = hiltViewModel()) {
-    val items by viewModel.uiState.collectAsStateWithLifecycle()
-    if (items is Success) {
-        PlantScreen(
-            items = (items as Success).data,
-            onSave = { name -> viewModel.addPlant(name) },
-            modifier = modifier
-        )
-    }
+  val items by viewModel.uiState.collectAsStateWithLifecycle()
+  if (items is Success) {
+    PlantScreen(
+        items = (items as Success).data,
+        onSave = { name -> viewModel.addPlant(name) },
+        modifier = modifier)
+  }
 }
 
 @Composable
@@ -56,25 +55,17 @@ internal fun PlantScreen(
     onSave: (name: String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Column(modifier) {
-        var namePlant by remember { mutableStateOf("Compose") }
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(bottom = 24.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            TextField(
-                value = namePlant,
-                onValueChange = { namePlant = it }
-            )
+  Column(modifier) {
+    var namePlant by remember { mutableStateOf("Compose") }
+    Row(
+        modifier = Modifier.fillMaxWidth().padding(bottom = 24.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+      TextField(value = namePlant, onValueChange = { namePlant = it })
 
-            Button(modifier = Modifier.width(96.dp), onClick = { onSave(namePlant) }) {
-                Text("Save")
-            }
-        }
-        items.forEach {
-            Text("Saved item: $it")
-        }
+      Button(modifier = Modifier.width(96.dp), onClick = { onSave(namePlant) }) { Text("Save") }
     }
+    items.forEach { Text("Saved item: $it") }
+  }
 }
 
 // Previews
@@ -82,15 +73,11 @@ internal fun PlantScreen(
 @Preview(showBackground = true)
 @Composable
 private fun DefaultPreview() {
-    MyApplicationTheme {
-        PlantScreen(listOf("Compose", "Room", "Kotlin"), onSave = {})
-    }
+  AppTheme { PlantScreen(listOf("Compose", "Room", "Kotlin"), onSave = {}) }
 }
 
 @Preview(showBackground = true, widthDp = 480)
 @Composable
 private fun PortraitPreview() {
-    MyApplicationTheme {
-        PlantScreen(listOf("Compose", "Room", "Kotlin"), onSave = {})
-    }
+  AppTheme { PlantScreen(listOf("Compose", "Room", "Kotlin"), onSave = {}) }
 }

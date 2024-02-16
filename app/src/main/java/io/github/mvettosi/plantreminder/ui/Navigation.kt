@@ -27,10 +27,10 @@ import io.github.mvettosi.plantreminder.feature.plant.ui.PlantScreen
 
 @Composable
 fun MainNavigation() {
-    val navController = rememberNavController()
+  val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "main") {
-        composable("main") { PlantScreen(modifier = Modifier.padding(16.dp)) }
-        // TODO: Add more destinations
-    }
+  NavHost(navController = navController, startDestination = "main") {
+    composable("main") { PlantScreen(modifier = Modifier.padding(16.dp)) }
+    // TODO: Add more destinations
+  }
 }

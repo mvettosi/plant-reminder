@@ -30,18 +30,14 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class DatabaseModule {
-    @Provides
-    fun providePlantDao(appDatabase: AppDatabase): PlantDao {
-        return appDatabase.plantDao()
-    }
+  @Provides
+  fun providePlantDao(appDatabase: AppDatabase): PlantDao {
+    return appDatabase.plantDao()
+  }
 
-    @Provides
-    @Singleton
-    fun provideAppDatabase(@ApplicationContext appContext: Context): AppDatabase {
-        return Room.databaseBuilder(
-            appContext,
-            AppDatabase::class.java,
-            "Plant"
-        ).build()
-    }
+  @Provides
+  @Singleton
+  fun provideAppDatabase(@ApplicationContext appContext: Context): AppDatabase {
+    return Room.databaseBuilder(appContext, AppDatabase::class.java, "Plant").build()
+  }
 }

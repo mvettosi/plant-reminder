@@ -5,8 +5,10 @@ import io.github.domain.repository.NotificationRepository
 import javax.inject.Inject
 
 class SaveDailyReminderUseCase
-@Inject constructor(private val notificationRepository: NotificationRepository) {
+@Inject
+constructor(private val notificationRepository: NotificationRepository) {
   suspend operator fun invoke(plantsToWater: Int) = runCatching {
-     notificationRepository.saveNotification(Notification.DailyReminder(plantsToWated = plantsToWater))
+    notificationRepository.saveNotification(
+        Notification.DailyReminder(plantsToWated = plantsToWater))
   }
 }

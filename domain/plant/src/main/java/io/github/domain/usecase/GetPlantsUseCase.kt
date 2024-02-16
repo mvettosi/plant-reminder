@@ -11,24 +11,21 @@ import java.time.LocalDateTime
 import javax.inject.Inject
 
 class GetPlantsUseCase
-@Inject constructor(private val plantRepository: PlantRepository, private val timeHelper: TimeHelper) {
+@Inject
+constructor(private val plantRepository: PlantRepository, private val timeHelper: TimeHelper) {
   suspend operator fun invoke(filter: PlantFilter): Result<List<Plant>> = runCatching {
-    plantRepository.getPlants()
-      .filter { !it.deleted }
-      .let { plants ->
+    plantRepository.getPlants().filter { !it.deleted }.let { plants ->
       val now = timeHelper.now()
       when (filter) {
-        UPCOMING -> plants
-          .filter { it.nextWaterDate.isAfter(now) }
-          .sortedBy { it.nextWaterDate }
-        FORGOT_TO_WATER -> plants
-          .filter { it.nextWaterDate.isBefore(now) }
-          .sortedBy { it.nextWaterDate }
-        HISTORY -> plants
-          .filter { it.lastWaterDate != LocalDateTime.MIN || it.nextWaterDate.isBefore(now) }
-          .sortedByDescending {
-            if (it.nextWaterDate.isBefore(now)) it.nextWaterDate else it.lastWaterDate
-          }
+        UPCOMING -> plants.filter { it.nextWaterDate.isAfter(now) }.sortedBy { it.nextWaterDate }
+        FORGOT_TO_WATER ->
+            plants.filter { it.nextWaterDate.isBefore(now) }.sortedBy { it.nextWaterDate }
+        HISTORY ->
+            plants
+                .filter { it.lastWaterDate != LocalDateTime.MIN || it.nextWaterDate.isBefore(now) }
+                .sortedByDescending {
+                  if (it.nextWaterDate.isBefore(now)) it.nextWaterDate else it.lastWaterDate
+                }
       }
     }
   }

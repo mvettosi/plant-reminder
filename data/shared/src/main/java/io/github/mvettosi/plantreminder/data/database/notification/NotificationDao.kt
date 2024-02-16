@@ -5,12 +5,10 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
-
 @Dao
 interface NotificationDao {
-    @Query("SELECT * FROM NotificationEntity")
-    fun getNotifications(): List<NotificationEntity>
+  @Query("SELECT * FROM NotificationEntity") fun getNotifications(): List<NotificationEntity>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertNotification(item: NotificationEntity)
+  @Insert(onConflict = OnConflictStrategy.REPLACE)
+  suspend fun insertNotification(item: NotificationEntity)
 }

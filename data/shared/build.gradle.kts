@@ -14,64 +14,61 @@
  * limitations under the License.
  */
 
-@Suppress("DSL_SCOPE_VIOLATION") // Remove when fixed https://youtrack.jetbrains.com/issue/KTIJ-19369
+@Suppress(
+    "DSL_SCOPE_VIOLATION") // Remove when fixed https://youtrack.jetbrains.com/issue/KTIJ-19369
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.ksp)
-    alias(libs.plugins.kotlin.kapt)
+  alias(libs.plugins.android.library)
+  alias(libs.plugins.kotlin.android)
+  alias(libs.plugins.ksp)
+  alias(libs.plugins.kotlin.kapt)
 }
 
 android {
-    namespace = "io.github.mvettosi.plantreminder.data.shared"
-    compileSdk = 34
+  namespace = "io.github.mvettosi.plantreminder.data.shared"
+  compileSdk = 34
 
-    defaultConfig {
-        minSdk = 26
+  defaultConfig {
+    minSdk = 26
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
+    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    consumerProguardFiles("consumer-rules.pro")
 
-        // The schemas directory contains a schema file for each version of the Room database.
-        // This is required to enable Room auto migrations.
-        // See https://developer.android.com/reference/kotlin/androidx/room/AutoMigration.
-        ksp {
-            arg("room.schemaLocation", "$projectDir/schemas")
-        }
-    }
+    // The schemas directory contains a schema file for each version of the Room database.
+    // This is required to enable Room auto migrations.
+    // See https://developer.android.com/reference/kotlin/androidx/room/AutoMigration.
+    ksp { arg("room.schemaLocation", "$projectDir/schemas") }
+  }
 
-    buildFeatures {
-        aidl = false
-        buildConfig = false
-        renderScript = false
-        shaders = false
-    }
+  buildFeatures {
+    aidl = false
+    buildConfig = false
+    renderScript = false
+    shaders = false
+  }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
+  compileOptions {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+  }
 
-    kotlinOptions {
-        jvmTarget = "17"
-    }
+  kotlinOptions { jvmTarget = "17" }
 }
 
 dependencies {
-    // Arch Components
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.compiler)
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
+  // Arch Components
+  implementation(libs.androidx.room.runtime)
+  implementation(libs.androidx.room.ktx)
+  ksp(libs.androidx.room.compiler)
+  implementation(libs.hilt.android)
+  kapt(libs.hilt.compiler)
 
-    // Test
-    testImplementation(libs.org.jetbrains.kotlin.kotlin.test)
-    testImplementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.test)
+  // Test
+  testImplementation(libs.org.jetbrains.kotlin.kotlin.test)
+  testImplementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.test)
 
-    // Instrumented tests: jUnit rules and runners
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.androidx.test.runner)
-    androidTestImplementation(libs.org.jetbrains.kotlin.kotlin.test)
-    androidTestImplementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.test)
+  // Instrumented tests: jUnit rules and runners
+  androidTestImplementation(libs.androidx.test.ext.junit)
+  androidTestImplementation(libs.androidx.test.runner)
+  androidTestImplementation(libs.org.jetbrains.kotlin.kotlin.test)
+  androidTestImplementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.test)
 }

@@ -27,11 +27,10 @@ data class NotificationEntity(
     val plantsToWated: Int? = null,
     val plantId: Int? = null
 ) {
-    @PrimaryKey(autoGenerate = true)
-    var uid: Int = 0
+  @PrimaryKey(autoGenerate = true) var uid: Int = 0
 }
 
 enum class NotificationType {
-    DAILY_REMINDER,
-    FORGOT_TO_WATER
+  DAILY_REMINDER,
+  FORGOT_TO_WATER
 }

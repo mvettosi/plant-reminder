@@ -16,7 +16,9 @@
 
 package io.github.mvettosi.plantreminder.feature.plant.ui.plant
 
-
+import io.github.mvettosi.plantreminder.core.data.PlantRepository
+import io.github.mvettosi.plantreminder.feature.plant.ui.PlantUiState
+import io.github.mvettosi.plantreminder.feature.plant.ui.PlantViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -24,9 +26,6 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import io.github.mvettosi.plantreminder.core.data.PlantRepository
-import io.github.mvettosi.plantreminder.feature.plant.ui.PlantUiState
-import io.github.mvettosi.plantreminder.feature.plant.ui.PlantViewModel
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -35,27 +34,27 @@ import io.github.mvettosi.plantreminder.feature.plant.ui.PlantViewModel
  */
 @OptIn(ExperimentalCoroutinesApi::class) // TODO: Remove when stable
 class PlantViewModelTest {
-    @Test
-    fun uiState_initiallyLoading() = runTest {
-        val viewModel = PlantViewModel(FakePlantRepository())
-        assertEquals(viewModel.uiState.first(), PlantUiState.Loading)
-    }
+  @Test
+  fun uiState_initiallyLoading() = runTest {
+    val viewModel = PlantViewModel(FakePlantRepository())
+    assertEquals(viewModel.uiState.first(), PlantUiState.Loading)
+  }
 
-    @Test
-    fun uiState_onItemSaved_isDisplayed() = runTest {
-        val viewModel = PlantViewModel(FakePlantRepository())
-        assertEquals(viewModel.uiState.first(), PlantUiState.Loading)
-    }
+  @Test
+  fun uiState_onItemSaved_isDisplayed() = runTest {
+    val viewModel = PlantViewModel(FakePlantRepository())
+    assertEquals(viewModel.uiState.first(), PlantUiState.Loading)
+  }
 }
 
 private class FakePlantRepository : PlantRepository {
 
-    private val data = mutableListOf<String>()
+  private val data = mutableListOf<String>()
 
-    override val plants: Flow<List<String>>
-        get() = flow { emit(data.toList()) }
+  override val plants: Flow<List<String>>
+    get() = flow { emit(data.toList()) }
 
-    override suspend fun add(name: String) {
-        data.add(0, name)
-    }
+  override suspend fun add(name: String) {
+    data.add(0, name)
+  }
 }

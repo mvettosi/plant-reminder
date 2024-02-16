@@ -4,8 +4,7 @@ import io.github.domain.repository.NotificationRepository
 import javax.inject.Inject
 
 class GetNotificationsUseCase
-@Inject constructor(private val notificationRepository: NotificationRepository) {
-  suspend operator fun invoke() = runCatching {
-     notificationRepository.getNotifications()
-  }
+@Inject
+constructor(private val notificationRepository: NotificationRepository) {
+  suspend operator fun invoke() = runCatching { notificationRepository.getNotifications() }
 }

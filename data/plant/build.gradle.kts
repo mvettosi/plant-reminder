@@ -14,52 +14,51 @@
  * limitations under the License.
  */
 
-@Suppress("DSL_SCOPE_VIOLATION") // Remove when fixed https://youtrack.jetbrains.com/issue/KTIJ-19369
+@Suppress(
+    "DSL_SCOPE_VIOLATION") // Remove when fixed https://youtrack.jetbrains.com/issue/KTIJ-19369
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.kapt)
+  alias(libs.plugins.android.library)
+  alias(libs.plugins.kotlin.android)
+  alias(libs.plugins.kotlin.kapt)
 }
 
 android {
-    namespace = "io.github.mvettosi.plantreminder.core.data.plant"
-    compileSdk = 34
+  namespace = "io.github.mvettosi.plantreminder.core.data.plant"
+  compileSdk = 34
 
-    defaultConfig {
-        minSdk = 26
+  defaultConfig {
+    minSdk = 26
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
+    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    consumerProguardFiles("consumer-rules.pro")
+  }
 
-    buildFeatures {
-        aidl = false
-        buildConfig = false
-        renderScript = false
-        shaders = false
-    }
+  buildFeatures {
+    aidl = false
+    buildConfig = false
+    renderScript = false
+    shaders = false
+  }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
+  compileOptions {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+  }
 
-    kotlinOptions {
-        jvmTarget = "17"
-    }
+  kotlinOptions { jvmTarget = "17" }
 }
 
 dependencies {
-    implementation(project(":data:shared"))
-    implementation(project(":domain:plant"))
+  implementation(project(":data:shared"))
+  implementation(project(":domain:plant"))
 
-    // Arch Components
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
+  // Arch Components
+  implementation(libs.hilt.android)
+  kapt(libs.hilt.compiler)
 
-    implementation(libs.kotlinx.coroutines.android)
+  implementation(libs.kotlinx.coroutines.android)
 
-    // Local tests: jUnit, coroutines, Android runner
-    testImplementation(libs.junit)
-    testImplementation(libs.kotlinx.coroutines.test)
+  // Local tests: jUnit, coroutines, Android runner
+  testImplementation(libs.junit)
+  testImplementation(libs.kotlinx.coroutines.test)
 }

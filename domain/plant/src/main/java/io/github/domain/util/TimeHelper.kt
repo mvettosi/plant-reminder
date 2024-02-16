@@ -6,13 +6,8 @@ import java.time.temporal.TemporalAdjusters
 import javax.inject.Inject
 
 class TimeHelper @Inject constructor() {
-    fun now(): LocalDateTime = LocalDateTime.now()
+  fun now(): LocalDateTime = LocalDateTime.now()
 }
 
 fun Plant.getNewWateringDate(now: LocalDateTime): LocalDateTime =
-    waterFrequency.minOf {
-        now
-            .toLocalDate()
-            .with(TemporalAdjusters.next(it))
-            .atTime(waterTime)
-    }
+    waterFrequency.minOf { now.toLocalDate().with(TemporalAdjusters.next(it)).atTime(waterTime) }

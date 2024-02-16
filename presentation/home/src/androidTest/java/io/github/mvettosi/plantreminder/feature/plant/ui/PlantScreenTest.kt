@@ -26,25 +26,20 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/**
- * UI tests for [PlantScreen].
- */
+/** UI tests for [PlantScreen]. */
 @RunWith(AndroidJUnit4::class)
 class PlantScreenTest {
 
-    @get:Rule
-    val composeTestRule = createAndroidComposeRule<ComponentActivity>()
+  @get:Rule val composeTestRule = createAndroidComposeRule<ComponentActivity>()
 
-    @Before
-    fun setup() {
-        composeTestRule.setContent {
-            PlantScreen(FAKE_DATA, onSave = {})
-        }
-    }
-    @Test
-    fun firstItem_exists() {
-        composeTestRule.onNodeWithText(FAKE_DATA.first()).assertExists().performClick()
-    }
+  @Before
+  fun setup() {
+    composeTestRule.setContent { PlantScreen(FAKE_DATA, onSave = {}) }
+  }
+  @Test
+  fun firstItem_exists() {
+    composeTestRule.onNodeWithText(FAKE_DATA.first()).assertExists().performClick()
+  }
 }
 
 private val FAKE_DATA = listOf("Compose", "Room", "Kotlin")

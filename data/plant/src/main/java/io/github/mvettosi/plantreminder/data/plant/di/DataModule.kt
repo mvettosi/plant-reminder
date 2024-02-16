@@ -28,9 +28,5 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 interface DataModule {
 
-    @Singleton
-    @Binds
-    fun bindsPlantRepository(
-        plantRepository: PlantRepositoryImpl
-    ): PlantRepository
+  @Singleton @Binds fun bindsPlantRepository(plantRepository: PlantRepositoryImpl): PlantRepository
 }

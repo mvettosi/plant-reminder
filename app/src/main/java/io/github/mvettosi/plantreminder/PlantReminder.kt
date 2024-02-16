@@ -19,5 +19,4 @@ package io.github.mvettosi.plantreminder
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
-@HiltAndroidApp
-class PlantReminder : Application()
+@HiltAndroidApp class PlantReminder : Application()

@@ -6,29 +6,29 @@ import io.github.mvettosi.plantreminder.data.database.notification.NotificationT
 import javax.inject.Inject
 
 class NotificationEntityMapper @Inject constructor() {
-    fun mapToEntity(input: Notification) = NotificationEntity(
-        type = when(input) {
-            is Notification.DailyReminder -> NotificationType.DAILY_REMINDER
-            is Notification.ForgotToWater -> NotificationType.FORGOT_TO_WATER
-        },
-        displayedTime = input.displayedTime,
-        plantsToWated = if (input is Notification.DailyReminder) input.plantsToWated else null,
-        plantId = if (input is Notification.ForgotToWater) input.plantId else null,
-    ).apply {
-        uid = input.id
-    }
+  fun mapToEntity(input: Notification) =
+      NotificationEntity(
+              type =
+                  when (input) {
+                    is Notification.DailyReminder -> NotificationType.DAILY_REMINDER
+                    is Notification.ForgotToWater -> NotificationType.FORGOT_TO_WATER
+                  },
+              displayedTime = input.displayedTime,
+              plantsToWated =
+                  if (input is Notification.DailyReminder) input.plantsToWated else null,
+              plantId = if (input is Notification.ForgotToWater) input.plantId else null,
+          )
+          .apply { uid = input.id }
 
-    fun mapToDomain(input: NotificationEntity) =
-        when(input.type) {
-            NotificationType.DAILY_REMINDER -> Notification.DailyReminder(
+  fun mapToDomain(input: NotificationEntity) =
+      when (input.type) {
+        NotificationType.DAILY_REMINDER ->
+            Notification.DailyReminder(
                 id = input.uid,
                 displayedTime = input.displayedTime,
-                plantsToWated = input.plantsToWated ?: 0
-            )
-            NotificationType.FORGOT_TO_WATER -> Notification.ForgotToWater(
-                id = input.uid,
-                displayedTime = input.displayedTime,
-                plantId = input.plantId ?: 0
-            )
-        }
+                plantsToWated = input.plantsToWated ?: 0)
+        NotificationType.FORGOT_TO_WATER ->
+            Notification.ForgotToWater(
+                id = input.uid, displayedTime = input.displayedTime, plantId = input.plantId ?: 0)
+      }
 }

@@ -35,6 +35,5 @@ data class PlantEntity(
     val nextWaterDate: LocalDateTime,
     val trashed: Boolean = false
 ) {
-    @PrimaryKey(autoGenerate = true)
-    var uid: Int = 0
+  @PrimaryKey(autoGenerate = true) var uid: Int = 0
 }
