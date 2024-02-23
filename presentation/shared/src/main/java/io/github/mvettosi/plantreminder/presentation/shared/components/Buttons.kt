@@ -43,7 +43,7 @@ fun BigButton(
 ) {
   Button(
       onClick = onClick,
-      modifier = modifier.height(48.dp).width(262.dp),
+      modifier = modifier,
       enabled = enabled,
       shape = RoundedCornerShape(corner = CornerSize(10.dp)),
       colors =
@@ -119,10 +119,26 @@ fun ButtonPreviews() {
         modifier = Modifier.wrapContentSize().padding(10.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(10.dp)) {
-      BigButton(onClick = {}, text = "Add Your First Plant")
-      BigButton(onClick = {}, enabled = false, text = "Add Your First Plant")
-      SmallButton(onClick = {}, text = "Change Image", iconId = R.drawable.upload)
-      SmallButton(onClick = {}, enabled = false, text = "Change Image", iconId = R.drawable.upload)
+      BigButton(
+          modifier = Modifier.height(48.dp).width(262.dp),
+          onClick = {},
+          text = "Add Your First Plant")
+      BigButton(
+          modifier = Modifier.height(48.dp).width(262.dp),
+          onClick = {},
+          enabled = false,
+          text = "Add Your First Plant")
+      SmallButton(
+          modifier = Modifier.height(48.dp).width(262.dp),
+          onClick = {},
+          text = "Change Image",
+          iconId = R.drawable.upload)
+      SmallButton(
+          modifier = Modifier.height(48.dp).width(262.dp),
+          onClick = {},
+          enabled = false,
+          text = "Change Image",
+          iconId = R.drawable.upload)
     }
   }
 }
